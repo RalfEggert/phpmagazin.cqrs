@@ -1,0 +1,14 @@
+# Slash am Ende entfernen
+RewriteEngine  on
+RewriteRule ^(.+)/$ http://%{HTTP_HOST}/$1 [R=301,L]
+
+# Anfragen auf index.php umleiten
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+
+Options -MultiViews

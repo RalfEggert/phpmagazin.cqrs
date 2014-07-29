@@ -1,0 +1,95 @@
+<?php
+/**
+ * Zend Framework 2 - PHP-Magazin CQRS
+ *
+ * Beispiele für ZF2 & CQRS
+ *
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * @link       http://www.ralfeggert.de/
+ */
+
+/**
+ * Index view script
+ *
+ * @package    Application
+ */
+
+$this->headTitle('Server Fehler');
+?>
+<div class="hero-unit">
+    <h1>Es ist ein Server Fehler aufgetreten!</h1>
+</div>
+<div class="alert alert-error">
+    <p>Bitte später noch einmal versuchen.</p>
+</div>
+
+<?php if (isset($this->display_exceptions) && $this->display_exceptions): ?>
+    <?php if (isset($this->exception) && $this->exception instanceof Exception): ?>
+        <?php $e = $this->exception->getPrevious(); ?>
+        <div class="well">
+            <h3>Weitere Informationen</h3>
+            <table class="table">
+                <tr>
+                    <th>Exception</th>
+                    <td><?php echo get_class($this->exception); ?></td>
+                </tr>
+                <tr>
+                    <th>Datei</th>
+                    <td>
+                        <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine(
+                            ) ?></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Meldung</th>
+                    <td>
+                        <pre class="prettyprint linenums"><?php echo $this->exception->getMessage() ?></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Stack&nbsp;Trace</th>
+                    <td>
+                        <pre class="prettyprint linenums"><?php echo $this->exception->getTraceAsString() ?></pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <?php if ($e) : ?>
+            <hr/>
+            <div class="well">
+                <h3>Vorherige Exceptions</h3>
+                <?php while ($e) : ?>
+                    <table class="table">
+                        <tr>
+                            <th>Exception</th>
+                            <td><?php echo get_class($e); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Datei</th>
+                            <td>
+                                <pre class="prettyprint linenums"><?php echo $e->getFile() ?>:<?php echo $e->getLine() ?></pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Meldung</th>
+                            <td>
+                                <pre class="prettyprint linenums"><?php echo $e->getMessage() ?></pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Stack&nbsp;Trace</th>
+                            <td>
+                                <pre class="prettyprint linenums"><?php echo $e->getTraceAsString() ?></pre>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr/>
+                    <?php $e = $e->getPrevious(); ?>
+                <?php endwhile; ?>
+            </div>
+        <?php endif; ?>
+    <?php else: ?>
+        <h3>Keine Exception vorhanden</h3>
+    <?php endif ?>
+<?php endif ?>

@@ -1,0 +1,137 @@
+/**
+ * Zend Framework 2 - PHP-Magazin CQRS
+ *
+ * Beispiele für ZF2 & CQRS
+ * 
+ * @package    Application
+ * @author     Ralf Eggert <r.eggert@travello.de>
+ * @link       http://www.ralfeggert.de/
+ */
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/**
+ * basic
+ */
+body {
+    font-family: 'Open Sans', ​ Arial, ​ sans-serif;
+    font-size: 14px;
+    border-top: 10px solid #0d7146;
+}
+
+h1 {
+    color: #0d7146;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #0d7146;
+}
+
+.jumbotron h1 {
+    font-size: 36px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+h4 {
+    color: #333333;
+}
+
+a {
+    color: #0d7146;
+}
+
+a:hover {
+    color: #04492c;
+}
+
+/**
+ * header
+ */
+header .top_line {
+    height: 10px;
+}
+
+header .logo {
+    float: left;
+    margin-bottom: 10px;
+}
+
+header .logo a {
+    text-decoration: none;
+}
+
+header .logo-text {
+    text-align: right;
+}
+
+header .logo-text a {
+    color: #0d7146;
+}
+
+header .logo-text h2 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: normal;
+}
+
+/**
+ * footer
+ */
+footer {
+    background-color: #04492c;
+    color: #ffffff;
+    font-size: 12px;
+    margin-top: 17px;
+    padding-bottom: 40px;
+}
+
+footer .footer-top {
+    background-color: #0d7146;
+    height: 10px;
+    margin-bottom: 17px;
+}
+
+footer .container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+footer h4 {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 10px;
+    margin-bottom: 2px;
+}
+
+footer ul {
+    margin: 0;
+    list-style: none;
+}
+
+footer ul li {
+    border-bottom: 1px solid #898989;
+    line-height: 28px;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/**
+ * general
+ */
+.pull-center {
+    text-align: center;
+    margin: auto;
+}
+
