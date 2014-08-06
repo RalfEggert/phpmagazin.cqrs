@@ -15,4 +15,13 @@
  * @package     Application
  */
 return array(
+    'db' => array(
+        'driver'  => 'Pdo',
+        'dsn'     => 'mysql:dbname=phpmagazin-cqrs;host=localhost;charset=utf8',
+        'user'    => 'cqrs',
+        'pass'    => 'cqrs',
+    ),
+    'mongodb' => array(
+        'database' => 'pizzadb',
+    ),
 );

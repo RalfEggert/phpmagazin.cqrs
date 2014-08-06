@@ -12,6 +12,9 @@
 return array(
     'modules'                 => array(
         'Application',
+        'PizzaView',
+        'PizzaModification',
+        'MongoDB',
         'ZendDeveloperTools'
     ),
     'module_listener_options' => array(
