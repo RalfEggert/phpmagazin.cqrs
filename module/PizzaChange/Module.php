@@ -4,7 +4,7 @@
  *
  * Beispiele für ZF2 & CQRS
  *
- * @package    Application
+ * @package    PizzaChange
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @link       http://www.ralfeggert.de/
  */
@@ -12,39 +12,20 @@
 /**
  * namespace definition and usage
  */
-namespace Application;
+namespace PizzaChange;
 
-use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\Mvc\ModuleRouteListener;
 
 /**
- * Application module class
+ * PizzaChange module class
  *
- * @package    Application
+ * @package    PizzaChange
  */
 class Module implements
-    BootstrapListenerInterface,
     ConfigProviderInterface,
     AutoloaderProviderInterface
 {
-    /**
-     * Listen to the bootstrap event
-     *
-     * @param EventInterface# $e
-     *
-     * @return void
-     */
-    public function onBootstrap(EventInterface $e)
-    {
-        // attach module listener
-        $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
-    }
-
     /**
      * Returns configuration to merge with application configuration
      *

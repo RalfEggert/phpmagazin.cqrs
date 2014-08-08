@@ -14,8 +14,8 @@
  */
 namespace MongoDB\Collection;
 
-use MongoDB;
 use MongoCollection;
+use MongoDB;
 
 
 /**

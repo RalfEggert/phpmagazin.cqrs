@@ -26,19 +26,24 @@ $this->headTitle('Seite nicht gefunden');
     if (isset($this->reason) && $this->reason) {
         switch ($this->reason) {
             case 'error-controller-cannot-dispatch':
-                $reasonMessage = 'Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten.';
+                $reasonMessage
+                    = 'Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten.';
                 break;
             case 'error-controller-not-found':
-                $reasonMessage = 'Der angeforderte Controller konnte keiner Controller Klasse zugeordnet werden.';
+                $reasonMessage
+                    = 'Der angeforderte Controller konnte keiner Controller Klasse zugeordnet werden.';
                 break;
             case 'error-controller-invalid':
-                $reasonMessage = 'Der angeforderte Controller ist nicht aufrufbar.';
+                $reasonMessage
+                    = 'Der angeforderte Controller ist nicht aufrufbar.';
                 break;
             case 'error-router-no-match':
-                $reasonMessage = 'Für die angeforderte URL konnte keine Übereinstimmung gefunden werden.';
+                $reasonMessage
+                    = 'Für die angeforderte URL konnte keine Übereinstimmung gefunden werden.';
                 break;
             default:
-                $reasonMessage = 'Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 Fehler aufgetreten ist.';
+                $reasonMessage
+                    = 'Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 Fehler aufgetreten ist.';
                 break;
         }
 
@@ -53,9 +58,15 @@ $this->headTitle('Seite nicht gefunden');
         <?php if (isset($this->controller) && $this->controller): ?>
             <tr>
                 <th>Controller</th>
-                <td><?php echo $this->escapeHtml($this->controller) ?> <?php echo (isset($this->controller_class) && $this->controller_class
+                <td><?php echo $this->escapeHtml(
+                        $this->controller
+                    ) ?> <?php echo (isset($this->controller_class)
+                        && $this->controller_class
                         && $this->controller_class != $this->controller) ?
-                        '(' . sprintf(('resolves to %s'), $this->escapeHtml($this->controller_class)) . ')' : ''; ?></td>
+                        '(' . sprintf(
+                            ('resolves to %s'),
+                            $this->escapeHtml($this->controller_class)
+                        ) . ')' : ''; ?></td>
             </tr>
         <?php endif ?>
         <?php if (isset($this->exception) && $this->exception): ?>
@@ -66,20 +77,25 @@ $this->headTitle('Seite nicht gefunden');
             <tr>
                 <th>Datei</th>
                 <td>
-                    <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine(
-                        ) ?></pre>
+                    <pre
+                        class="prettyprint linenums"><?php echo $this->exception->getFile(
+                        ) ?>:<?php echo $this->exception->getLine() ?></pre>
                 </td>
             </tr>
             <tr>
                 <th>Meldung</th>
                 <td>
-                    <pre class="prettyprint linenums"><?php echo $this->exception->getMessage() ?></pre>
+                    <pre
+                        class="prettyprint linenums"><?php echo $this->exception->getMessage(
+                        ) ?></pre>
                 </td>
             </tr>
             <tr>
                 <th>Stack&nbsp;Trace</th>
                 <td>
-                    <pre class="prettyprint linenums"><?php echo $this->exception->getTraceAsString() ?></pre>
+                    <pre
+                        class="prettyprint linenums"><?php echo $this->exception->getTraceAsString(
+                        ) ?></pre>
                 </td>
             </tr>
         <?php endif ?>

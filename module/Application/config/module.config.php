@@ -42,6 +42,7 @@ return array(
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
+        'strategies'               => array('ViewJsonStrategy'),
         'template_map'             => include __DIR__ . '/../template_map.php',
         'template_path_stack'      => array(__DIR__ . '/../view'),
     ),

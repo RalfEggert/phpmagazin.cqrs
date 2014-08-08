@@ -16,15 +16,29 @@
  */
 
 // set header
-$this->headTitle('Zend Framework 2 - PHP-Magazin CQRS')->setSeparator(' - ')->setAutoEscape(false);
-$this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
-$this->headLink(array('rel' => 'shortcut icon', 'href' => $this->basePath() . '/img/favicon.ico'));
-$this->headLink()->appendStylesheet($this->basePath() . '/css/bootstrap.min.css');
-$this->headLink()->appendStylesheet($this->basePath() . '/css/bootstrap-theme.min.css');
-$this->headLink()->appendStylesheet($this->basePath() . '/css/font-awesome.min.css');
+$this->headTitle('Zend Framework 2 - PHP-Magazin CQRS')->setSeparator(' - ')
+    ->setAutoEscape(false);
+$this->headMeta()->appendName(
+    'viewport', 'width=device-width, initial-scale=1.0'
+);
+$this->headLink(
+    array('rel' => 'shortcut icon',
+          'href' => $this->basePath() . '/img/favicon.ico')
+);
+$this->headLink()->appendStylesheet(
+    $this->basePath() . '/css/bootstrap.min.css'
+);
+$this->headLink()->appendStylesheet(
+    $this->basePath() . '/css/bootstrap-theme.min.css'
+);
+$this->headLink()->appendStylesheet(
+    $this->basePath() . '/css/font-awesome.min.css'
+);
 $this->headLink()->appendStylesheet($this->basePath() . '/css/styles.css');
 $this->inlineScript()->prependFile('/js/bootstrap.min.js', 'text/javascript');
-$this->inlineScript()->prependFile('/js/jquery-2.0.3.min.js', 'text/javascript');
+$this->inlineScript()->prependFile(
+    '/js/jquery-2.0.3.min.js', 'text/javascript'
+);
 ?>
 <?php echo $this->doctype(); ?>
 <html lang="en">
@@ -43,7 +57,10 @@ $this->inlineScript()->prependFile('/js/jquery-2.0.3.min.js', 'text/javascript')
         <div class="row">
             <div class="span12">
                 <div class="logo col-xs-2">
-                    <a href="/"><img alt="Zend Framework 2" title="Zend Framework 2" src="/img/zf2-logo.png" class="img-responsive"></a>
+                    <a href="/"><img alt="Zend Framework 2"
+                                     title="Zend Framework 2"
+                                     src="/img/zf2-logo.png"
+                                     class="img-responsive"></a>
                 </div>
                 <div class="logo-text">
                     <h2><a href="/">PHP-Magazin CQRS</a></h2>
@@ -54,7 +71,9 @@ $this->inlineScript()->prependFile('/js/jquery-2.0.3.min.js', 'text/javascript')
     <div class="container">
         <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -62,9 +81,12 @@ $this->inlineScript()->prependFile('/js/jquery-2.0.3.min.js', 'text/javascript')
                 </button>
             </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse"
+                 id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="<?php echo $this->url('home'); ?>">Startseite</a></li>
+                    <li><a href="<?php echo $this->url(
+                            'home'
+                        ); ?>">Startseite</a></li>
                 </ul>
             </div>
         </nav>
@@ -82,12 +104,16 @@ $this->inlineScript()->prependFile('/js/jquery-2.0.3.min.js', 'text/javascript')
             <div class="col-md-12">
                 <h4>ZF2 - PHP-Magazin CQRS</h4>
                 <p>
-                    In diesem Projekt finden Sie die lauffähigen Beispiele für den Artikel
+                    In diesem Projekt finden Sie die lauffähigen Beispiele für
+                    den Artikel
                     zum Zend Framework 2 und CQRS aus dem PHP Magazin.
                 </p>
                 <p>
-                    <a href="https://plus.google.com/105130475645941839411" target="_blank" class="btn btn-default">Feedback erwünscht!</a>
-                    <a href="https://github.com/RalfEggert/phpmagazin.service-manager" target="_blank" class="btn btn-default">GitHub
+                    <a href="https://plus.google.com/105130475645941839411"
+                       target="_blank" class="btn btn-default">Feedback
+                        erwünscht!</a>
+                    <a href="https://github.com/RalfEggert/phpmagazin.service-manager"
+                       target="_blank" class="btn btn-default">GitHub
                         Repository</a>
                 </p>
             </div>

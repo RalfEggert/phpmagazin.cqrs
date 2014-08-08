@@ -10,9 +10,8 @@
  */
 
 /**
- * PizzaView module configuration
+ * PizzaRead module configuration
  *
  * @package    MongoDB
  */
-return array(
-);
+return array();

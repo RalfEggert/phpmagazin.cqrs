@@ -12,8 +12,9 @@
 return array(
     'modules'                 => array(
         'Application',
-        'PizzaView',
-        'PizzaModification',
+        'PizzaRead',
+        'PizzaChange',
+        'CQRS',
         'MongoDB',
         'ZendDeveloperTools'
     ),
