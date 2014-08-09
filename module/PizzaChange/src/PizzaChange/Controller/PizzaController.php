@@ -80,7 +80,8 @@ class PizzaController extends AbstractRestfulController
     public function update($id, $data)
     {
         $command = new UpdatePizzaCommand(
-            $id, $data['title'], $data['price']
+            $id, $data['title'], $data['description'], $data['price'],
+            (array)$data['toppings']
         );
 
         $this->getCommandHandler()->execute($command);

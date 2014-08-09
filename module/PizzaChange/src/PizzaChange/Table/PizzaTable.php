@@ -48,8 +48,14 @@ class PizzaTable extends TableGateway implements PizzaTableInterface
         $select = $this->getSql()->select();
         $select->where->equalTo('id', $id);
 
+        $dataRow = $this->selectWith($select)->current();
+
+        if (!$dataRow) {
+            return false;
+        }
+
         $entity = new PizzaEntity();
-        $entity->exchangeArray($this->selectWith($select)->current());
+        $entity->exchangeArray($dataRow);
 
         return $entity;
     }

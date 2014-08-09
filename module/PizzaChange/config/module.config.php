@@ -59,6 +59,8 @@ return array(
             'PizzaChange\Table\PizzaToppings'      => 'PizzaChange\Table\PizzaToppingsTableFactory',
             'PizzaChange\Table\Topping'            => 'PizzaChange\Table\ToppingTableFactory',
             'PizzaChange\Event\CreatePizzaEvent'   => 'PizzaChange\Event\CreatePizzaEventFactory',
+            'PizzaChange\Event\UpdatePizzaEvent'   => 'PizzaChange\Event\UpdatePizzaEventFactory',
+            'PizzaChange\Event\DeletePizzaEvent'   => 'PizzaChange\Event\DeletePizzaEventFactory',
             'PizzaChange\Event\CreateToppingEvent' => 'PizzaChange\Event\CreateToppingEventFactory',
             'PizzaChange\Event\UpdateToppingEvent' => 'PizzaChange\Event\UpdateToppingEventFactory',
             'PizzaChange\Event\DeleteToppingEvent' => 'PizzaChange\Event\DeleteToppingEventFactory',
@@ -67,6 +69,8 @@ return array(
     'event_handler'   => array(
         'events' => array(
             'PizzaChange\Event\CreatePizzaEvent',
+            'PizzaChange\Event\UpdatePizzaEvent',
+            'PizzaChange\Event\DeletePizzaEvent',
             'PizzaChange\Event\CreateToppingEvent',
             'PizzaChange\Event\UpdateToppingEvent',
             'PizzaChange\Event\DeleteToppingEvent',

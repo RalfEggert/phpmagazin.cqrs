@@ -14,6 +14,9 @@
  */
 namespace PizzaChange\Repository;
 
+use PizzaChange\Command\CreatePizzaCommand;
+use PizzaChange\Command\DeletePizzaCommand;
+use PizzaChange\Command\UpdatePizzaCommand;
 use PizzaChange\Entity\PizzaEntityInterface;
 use PizzaChange\Table\PizzaTableInterface;
 use PizzaChange\Table\ToppingTableInterface;
@@ -63,4 +66,25 @@ interface PizzaRepositoryInterface
      * @return PizzaEntityInterface
      */
     public function fetchEntityById($id);
+
+    /**
+     * @param CreatePizzaCommand $command
+     *
+     * @return bool
+     */
+    public function createPizza(CreatePizzaCommand $command);
+
+    /**
+     * @param UpdatePizzaCommand $command
+     *
+     * @return bool
+     */
+    public function updatePizza(UpdatePizzaCommand $command);
+
+    /**
+     * @param DeletePizzaCommand $command
+     *
+     * @return bool
+     */
+    public function deletePizza(DeletePizzaCommand $command);
 }
