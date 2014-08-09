@@ -68,6 +68,9 @@ class UpdatePizzaEvent implements ListenerAggregateInterface
         $this->listeners[] = $events->attach(
             UpdatePizzaCommand::NAME, array($this, 'updatePizza'), 100
         );
+        $this->listeners[] = $events->attach(
+            UpdatePizzaCommand::NAME, array($this, 'addToQueue'), -100
+        );
     }
 
     /**
@@ -88,6 +91,8 @@ class UpdatePizzaEvent implements ListenerAggregateInterface
 
     /**
      * @param EventInterface $e
+     *
+     * @return bool
      */
     public function updatePizza(EventInterface $e)
     {
@@ -95,5 +100,25 @@ class UpdatePizzaEvent implements ListenerAggregateInterface
         $command = $e->getParams();
 
         return $this->getPizzaRepository()->updatePizza($command);
+    }
+
+    /**
+     * @param EventInterface $e
+     *
+     * @return int
+     */
+    public function addToQueue(EventInterface $e)
+    {
+        /** @var UpdatePizzaCommand $command */
+        $command = $e->getParams();
+
+        if (!$command->getResult()->getSuccess()) {
+            return false;
+        }
+
+        $serializedCommand = serialize($command);
+        $fileName = APPLICATION_ROOT . '/data/queue/' . md5($serializedCommand) . '.command';
+
+        return file_put_contents($fileName, $serializedCommand);
     }
 }

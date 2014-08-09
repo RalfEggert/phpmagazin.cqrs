@@ -68,6 +68,9 @@ class CreateToppingEvent implements ListenerAggregateInterface
         $this->listeners[] = $events->attach(
             CreateToppingCommand::NAME, array($this, 'createTopping'), 100
         );
+        $this->listeners[] = $events->attach(
+            CreateToppingCommand::NAME, array($this, 'addToQueue'), -100
+        );
     }
 
     /**
@@ -88,6 +91,8 @@ class CreateToppingEvent implements ListenerAggregateInterface
 
     /**
      * @param EventInterface $e
+     *
+     * @return bool
      */
     public function createTopping(EventInterface $e)
     {
@@ -95,5 +100,25 @@ class CreateToppingEvent implements ListenerAggregateInterface
         $command = $e->getParams();
 
         return $this->getToppingRepository()->createTopping($command);
+    }
+
+    /**
+     * @param EventInterface $e
+     *
+     * @return int
+     */
+    public function addToQueue(EventInterface $e)
+    {
+        /** @var CreateToppingCommand $command */
+        $command = $e->getParams();
+
+        if (!$command->getResult()->getSuccess()) {
+            return false;
+        }
+
+        $serializedCommand = serialize($command);
+        $fileName = APPLICATION_ROOT . '/data/queue/' . md5($serializedCommand) . '.command';
+
+        return file_put_contents($fileName, $serializedCommand);
     }
 }

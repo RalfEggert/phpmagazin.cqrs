@@ -48,11 +48,15 @@ interface ToppingRepositoryInterface
 
     /**
      * @param CreateToppingCommand $command
+     *
+     * @return bool
      */
     public function createTopping(CreateToppingCommand $command);
 
     /**
      * @param UpdateToppingCommand $command
+     *
+     * @return bool
      */
     public function updateTopping(UpdateToppingCommand $command);
 

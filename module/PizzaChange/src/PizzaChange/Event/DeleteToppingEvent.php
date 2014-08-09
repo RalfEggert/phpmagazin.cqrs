@@ -68,6 +68,9 @@ class DeleteToppingEvent implements ListenerAggregateInterface
         $this->listeners[] = $events->attach(
             DeleteToppingCommand::NAME, array($this, 'deleteTopping'), 100
         );
+        $this->listeners[] = $events->attach(
+            DeleteToppingCommand::NAME, array($this, 'addToQueue'), -100
+        );
     }
 
     /**
@@ -88,6 +91,8 @@ class DeleteToppingEvent implements ListenerAggregateInterface
 
     /**
      * @param EventInterface $e
+     *
+     * @return bool
      */
     public function deleteTopping(EventInterface $e)
     {
@@ -95,5 +100,25 @@ class DeleteToppingEvent implements ListenerAggregateInterface
         $command = $e->getParams();
 
         return $this->getToppingRepository()->deleteTopping($command);
+    }
+
+    /**
+     * @param EventInterface $e
+     *
+     * @return int
+     */
+    public function addToQueue(EventInterface $e)
+    {
+        /** @var DeleteToppingCommand $command */
+        $command = $e->getParams();
+
+        if (!$command->getResult()->getSuccess()) {
+            return false;
+        }
+
+        $serializedCommand = serialize($command);
+        $fileName = APPLICATION_ROOT . '/data/queue/' . md5($serializedCommand) . '.command';
+
+        return file_put_contents($fileName, $serializedCommand);
     }
 }

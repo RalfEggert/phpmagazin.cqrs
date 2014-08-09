@@ -68,6 +68,9 @@ class UpdateToppingEvent implements ListenerAggregateInterface
         $this->listeners[] = $events->attach(
             UpdateToppingCommand::NAME, array($this, 'updateTopping'), 100
         );
+        $this->listeners[] = $events->attach(
+            UpdateToppingCommand::NAME, array($this, 'addToQueue'), -100
+        );
     }
 
     /**
@@ -88,6 +91,8 @@ class UpdateToppingEvent implements ListenerAggregateInterface
 
     /**
      * @param EventInterface $e
+     *
+     * @return bool
      */
     public function updateTopping(EventInterface $e)
     {
@@ -95,5 +100,25 @@ class UpdateToppingEvent implements ListenerAggregateInterface
         $command = $e->getParams();
 
         return $this->getToppingRepository()->updateTopping($command);
+    }
+
+    /**
+     * @param EventInterface $e
+     *
+     * @return int
+     */
+    public function addToQueue(EventInterface $e)
+    {
+        /** @var UpdateToppingCommand $command */
+        $command = $e->getParams();
+
+        if (!$command->getResult()->getSuccess()) {
+            return false;
+        }
+
+        $serializedCommand = serialize($command);
+        $fileName = APPLICATION_ROOT . '/data/queue/' . md5($serializedCommand) . '.command';
+
+        return file_put_contents($fileName, $serializedCommand);
     }
 }

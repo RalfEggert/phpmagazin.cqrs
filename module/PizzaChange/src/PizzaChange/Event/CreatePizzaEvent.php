@@ -68,6 +68,9 @@ class CreatePizzaEvent implements ListenerAggregateInterface
         $this->listeners[] = $events->attach(
             CreatePizzaCommand::NAME, array($this, 'createPizza'), 100
         );
+        $this->listeners[] = $events->attach(
+            CreatePizzaCommand::NAME, array($this, 'addToQueue'), -100
+        );
     }
 
     /**
@@ -88,6 +91,8 @@ class CreatePizzaEvent implements ListenerAggregateInterface
 
     /**
      * @param EventInterface $e
+     *
+     * @return bool
      */
     public function createPizza(EventInterface $e)
     {
@@ -95,5 +100,25 @@ class CreatePizzaEvent implements ListenerAggregateInterface
         $command = $e->getParams();
 
         return $this->getPizzaRepository()->createPizza($command);
+    }
+
+    /**
+     * @param EventInterface $e
+     *
+     * @return int
+     */
+    public function addToQueue(EventInterface $e)
+    {
+        /** @var CreatePizzaCommand $command */
+        $command = $e->getParams();
+
+        if (!$command->getResult()->getSuccess()) {
+            return false;
+        }
+
+        $serializedCommand = serialize($command);
+        $fileName = APPLICATION_ROOT . '/data/queue/' . md5($serializedCommand) . '.command';
+
+        return file_put_contents($fileName, $serializedCommand);
     }
 }
