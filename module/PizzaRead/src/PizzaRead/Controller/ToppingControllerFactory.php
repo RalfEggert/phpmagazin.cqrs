@@ -14,7 +14,7 @@
  */
 namespace PizzaRead\Controller;
 
-use PizzaRead\Repository\PizzaRepositoryInterface;
+use PizzaRead\Repository\ToppingRepositoryInterface;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -39,7 +39,9 @@ class ToppingControllerFactory implements FactoryInterface
         $serviceLocator = $controllerManager->getServiceLocator();
 
         /** @var $toppingRepository ToppingRepositoryInterface */
-        $toppingRepository = $serviceLocator->get('PizzaRead\Repository\Topping');
+        $toppingRepository = $serviceLocator->get(
+            'PizzaRead\Repository\Topping'
+        );
 
         $controller = new ToppingController();
         $controller->setToppingRepository($toppingRepository);
