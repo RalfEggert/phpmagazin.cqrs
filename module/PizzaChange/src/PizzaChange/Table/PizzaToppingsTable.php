@@ -27,7 +27,7 @@ class PizzaToppingsTable extends TableGateway
     implements PizzaToppingsTableInterface
 {
     /**
-     * @param AdapterInterface $adapter
+     * @param AdapterInterface                      $adapter
      * @param \Zend\Db\ResultSet\ResultSetInterface $resultSetPrototype
      */
     public function __construct(

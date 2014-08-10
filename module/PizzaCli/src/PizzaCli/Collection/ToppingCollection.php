@@ -72,7 +72,7 @@ class ToppingCollection extends AbstractCollection
     /**
      * Update topping
      *
-     * @param array $updateData
+     * @param array   $updateData
      * @param MongoId $mongoId
      *
      * @return string
@@ -83,7 +83,7 @@ class ToppingCollection extends AbstractCollection
 
         $this->getCollection()->update($searchCriteria, $updateData);
 
-        return (string) $mongoId;
+        return (string)$mongoId;
     }
 
     /**
@@ -99,6 +99,6 @@ class ToppingCollection extends AbstractCollection
 
         $this->getCollection()->remove($searchCriteria);
 
-        return (string) $mongoId;
+        return (string)$mongoId;
     }
 }

@@ -117,7 +117,7 @@ class CreatePizzaEvent implements ListenerAggregateInterface
         }
 
         $serializedCommand = serialize($command);
-        $fileName = APPLICATION_ROOT . '/data/queue/'
+        $fileName          = APPLICATION_ROOT . '/data/queue/'
             . (microtime() + time())
             . '-'
             . md5($serializedCommand)

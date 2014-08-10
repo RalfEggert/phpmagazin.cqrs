@@ -60,8 +60,9 @@ class PizzaRepository implements PizzaRepositoryInterface
     /**
      * @param ToppingCollectionInterface $toppingCollection
      */
-    public function setToppingCollection(ToppingCollectionInterface $toppingCollection)
-    {
+    public function setToppingCollection(
+        ToppingCollectionInterface $toppingCollection
+    ) {
         $this->toppingCollection = $toppingCollection;
     }
 
@@ -116,7 +117,7 @@ class PizzaRepository implements PizzaRepositoryInterface
      */
     public function updateTopping(UpdateToppingCommand $command)
     {
-        $mongoId = $this->fetchMongoIdByToppingId((int) $command->getId());
+        $mongoId = $this->fetchMongoIdByToppingId((int)$command->getId());
 
         return $this->getToppingCollection()->update(
             $command->getResult()->getData(), $mongoId
@@ -130,7 +131,7 @@ class PizzaRepository implements PizzaRepositoryInterface
      */
     public function deleteTopping(DeleteToppingCommand $command)
     {
-        $mongoId = $this->fetchMongoIdByToppingId((int) $command->getId());
+        $mongoId = $this->fetchMongoIdByToppingId((int)$command->getId());
 
         return $this->getToppingCollection()->delete($mongoId);
     }
@@ -154,7 +155,7 @@ class PizzaRepository implements PizzaRepositoryInterface
      */
     public function updatePizza(UpdatePizzaCommand $command)
     {
-        $mongoId = $this->fetchMongoIdByPizzaId((int) $command->getId());
+        $mongoId = $this->fetchMongoIdByPizzaId((int)$command->getId());
 
         return $this->getPizzaCollection()->update(
             $command->getResult()->getData(), $mongoId
@@ -168,7 +169,7 @@ class PizzaRepository implements PizzaRepositoryInterface
      */
     public function deletePizza(DeletePizzaCommand $command)
     {
-        $mongoId = $this->fetchMongoIdByPizzaId((int) $command->getId());
+        $mongoId = $this->fetchMongoIdByPizzaId((int)$command->getId());
 
         return $this->getPizzaCollection()->delete($mongoId);
     }

@@ -119,7 +119,9 @@ class ToppingRepository implements ToppingRepositoryInterface
         }
 
         try {
-            $this->getToppingTable()->update($updateData, array('id' => $toppingId));
+            $this->getToppingTable()->update(
+                $updateData, array('id' => $toppingId)
+            );
         } catch (InvalidQueryException $e) {
             $result->setSuccess(false);
 

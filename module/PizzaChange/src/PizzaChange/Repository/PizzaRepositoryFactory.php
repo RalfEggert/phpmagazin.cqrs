@@ -42,7 +42,9 @@ class PizzaRepositoryFactory implements FactoryInterface
         $toppingTable = $serviceLocator->get('PizzaChange\Table\Topping');
 
         /** @var $pizzaToppingsTable ToppingTableInterface */
-        $pizzaToppingsTable = $serviceLocator->get('PizzaChange\Table\PizzaToppings');
+        $pizzaToppingsTable = $serviceLocator->get(
+            'PizzaChange\Table\PizzaToppings'
+        );
 
         $repository = new PizzaRepository();
         $repository->setPizzaTable($pizzaTable);

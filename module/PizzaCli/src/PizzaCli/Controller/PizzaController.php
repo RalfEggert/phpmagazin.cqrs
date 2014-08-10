@@ -55,13 +55,17 @@ class PizzaController extends AbstractConsoleController
         $this->getConsole()->writeLine(
             str_repeat('-', $this->getConsole()->getWidth())
         );
-        $this->getConsole()->writeLine('Process Pizza Queue to update MongoDB read data...');
+        $this->getConsole()->writeLine(
+            'Process Pizza Queue to update MongoDB read data...'
+        );
         $this->getConsole()->writeLine(
             str_repeat('-', $this->getConsole()->getWidth())
         );
         $this->getConsole()->setColor(ColorInterface::NORMAL);
 
-        $log = $this->getQueueHandler()->process(APPLICATION_ROOT . '/data/queue');
+        $log = $this->getQueueHandler()->process(
+            APPLICATION_ROOT . '/data/queue'
+        );
 
         foreach ($log as $line) {
             $this->getConsole()->writeLine($line);

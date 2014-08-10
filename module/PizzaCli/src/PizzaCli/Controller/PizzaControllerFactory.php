@@ -14,7 +14,6 @@
  */
 namespace PizzaCli\Controller;
 
-use CQRS\Command\CommandHandlerInterface;
 use PizzaCli\Queue\QueueHandlerInterface;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

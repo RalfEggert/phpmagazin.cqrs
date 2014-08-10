@@ -46,7 +46,7 @@ interface ToppingCollectionInterface
     /**
      * Update topping
      *
-     * @param array $updateData
+     * @param array   $updateData
      * @param MongoId $mongoId
      *
      * @return string
