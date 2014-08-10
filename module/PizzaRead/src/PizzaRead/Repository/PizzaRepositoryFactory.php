@@ -37,14 +37,8 @@ class PizzaRepositoryFactory implements FactoryInterface
         /** @var $pizzaCollection CollectionInterface */
         $pizzaCollection = $serviceLocator->get('PizzaRead\Collection\Pizza');
 
-        /** @var $toppingCollection CollectionInterface */
-        $toppingCollection = $serviceLocator->get(
-            'PizzaRead\Collection\Topping'
-        );
-
         $repository = new PizzaRepository();
         $repository->setPizzaCollection($pizzaCollection);
-        $repository->setToppingCollection($toppingCollection);
 
         return $repository;
     }

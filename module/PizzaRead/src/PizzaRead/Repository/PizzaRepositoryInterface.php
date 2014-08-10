@@ -24,18 +24,6 @@ use MongoDB\Collection\CollectionInterface;
 interface PizzaRepositoryInterface
 {
     /**
-     * @param CollectionInterface $toppingCollection
-     */
-    public function setToppingCollection(
-        CollectionInterface $toppingCollection
-    );
-
-    /**
-     * @return CollectionInterface
-     */
-    public function getPizzaCollection();
-
-    /**
      * @param CollectionInterface $pizzaCollection
      */
     public function setPizzaCollection(CollectionInterface $pizzaCollection);
@@ -43,7 +31,7 @@ interface PizzaRepositoryInterface
     /**
      * @return CollectionInterface
      */
-    public function getToppingCollection();
+    public function getPizzaCollection();
 
     /**
      * Fetch all pizzas
@@ -60,20 +48,4 @@ interface PizzaRepositoryInterface
      * @return array
      */
     public function fetchPizzaById($id);
-
-    /**
-     * Fetch topping by id
-     *
-     * @param int $id
-     *
-     * @return array
-     */
-    public function fetchToppingById($id);
-
-    /**
-     * Fetch all toppings
-     *
-     * @return array
-     */
-    public function fetchToppings();
 }

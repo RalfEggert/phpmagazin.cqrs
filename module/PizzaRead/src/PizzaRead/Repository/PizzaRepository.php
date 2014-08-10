@@ -29,11 +29,6 @@ class PizzaRepository implements PizzaRepositoryInterface
     protected $pizzaCollection;
 
     /**
-     * @var CollectionInterface
-     */
-    protected $toppingCollection;
-
-    /**
      * @param CollectionInterface $pizzaCollection
      */
     public function setPizzaCollection(CollectionInterface $pizzaCollection)
@@ -47,22 +42,6 @@ class PizzaRepository implements PizzaRepositoryInterface
     public function getPizzaCollection()
     {
         return $this->pizzaCollection;
-    }
-
-    /**
-     * @param CollectionInterface $toppingCollection
-     */
-    public function setToppingCollection(CollectionInterface $toppingCollection)
-    {
-        $this->toppingCollection = $toppingCollection;
-    }
-
-    /**
-     * @return CollectionInterface
-     */
-    public function getToppingCollection()
-    {
-        return $this->toppingCollection;
     }
 
     /**
@@ -85,27 +64,5 @@ class PizzaRepository implements PizzaRepositoryInterface
     public function fetchPizzas()
     {
         return $this->getPizzaCollection()->fetchList();
-    }
-
-    /**
-     * Fetch topping by id
-     *
-     * @param int $id
-     *
-     * @return array
-     */
-    public function fetchToppingById($id)
-    {
-        return $this->getToppingCollection()->fetchSingleById($id);
-    }
-
-    /**
-     * Fetch all toppings
-     *
-     * @return array
-     */
-    public function fetchToppings()
-    {
-        return $this->getToppingCollection()->fetchList();
     }
 }
