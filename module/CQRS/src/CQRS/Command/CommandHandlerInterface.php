@@ -14,7 +14,7 @@
  */
 namespace CQRS\Command;
 
-use Zend\EventManager\EventManagerInterface;
+use CQRS\Event\EventHandlerInterface;
 
 /**
  * Class CommandHandler
@@ -24,9 +24,9 @@ use Zend\EventManager\EventManagerInterface;
 interface CommandHandlerInterface
 {
     /**
-     * @param EventManagerInterface $eventHandler
+     * @param EventHandlerInterface $eventHandler
      */
-    public function __construct(EventManagerInterface $eventHandler);
+    public function __construct(EventHandlerInterface $eventHandler);
 
     /**
      * @param CommandInterface $command
