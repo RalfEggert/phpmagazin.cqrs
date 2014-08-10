@@ -24,9 +24,9 @@ use Zend\EventManager\EventManagerInterface;
 interface CommandHandlerInterface
 {
     /**
-     * @param EventManagerInterface $eventManager
+     * @param EventManagerInterface $eventHandler
      */
-    public function __construct(EventManagerInterface $eventManager);
+    public function __construct(EventManagerInterface $eventHandler);
 
     /**
      * @param CommandInterface $command

@@ -26,14 +26,14 @@ class CommandHandler implements CommandHandlerInterface
     /**
      * @var EventManagerInterface
      */
-    protected $eventManager;
+    protected $eventHandler;
 
     /**
-     * @param EventManagerInterface $eventManager
+     * @param EventManagerInterface $eventHandler
      */
-    public function __construct(EventManagerInterface $eventManager)
+    public function __construct(EventManagerInterface $eventHandler)
     {
-        $this->eventManager = $eventManager;
+        $this->eventHandler = $eventHandler;
     }
 
     /**
@@ -41,7 +41,7 @@ class CommandHandler implements CommandHandlerInterface
      */
     public function execute(CommandInterface $command)
     {
-        $this->eventManager->trigger(
+        $this->eventHandler->trigger(
             $command->getCommandName(), __CLASS__, $command
         );
     }

@@ -34,10 +34,10 @@ class CommandHandlerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var EventManagerInterface $eventManager */
-        $eventManager = $serviceLocator->get('CQRS\Event\Handler');
+        /** @var EventManagerInterface $eventHandler */
+        $eventHandler = $serviceLocator->get('CQRS\Event\Handler');
 
-        $repository = new CommandHandler($eventManager);
+        $repository = new CommandHandler($eventHandler);
 
         return $repository;
     }
