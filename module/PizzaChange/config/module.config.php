@@ -66,6 +66,7 @@ return array(
             'PizzaChange\Event\DeleteToppingEvent' => 'PizzaChange\Event\DeleteToppingEventFactory',
         ),
     ),
+
     'event_handler'   => array(
         'events' => array(
             'PizzaChange\Event\CreatePizzaEvent',

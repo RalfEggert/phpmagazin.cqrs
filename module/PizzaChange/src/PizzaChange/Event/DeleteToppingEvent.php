@@ -117,7 +117,12 @@ class DeleteToppingEvent implements ListenerAggregateInterface
         }
 
         $serializedCommand = serialize($command);
-        $fileName = APPLICATION_ROOT . '/data/queue/' . md5($serializedCommand) . '.command';
+        $fileName = APPLICATION_ROOT . '/data/queue/'
+            . (microtime() + time())
+            . '-'
+            . md5($serializedCommand)
+            . '.topping'
+            . '.command';
 
         return file_put_contents($fileName, $serializedCommand);
     }

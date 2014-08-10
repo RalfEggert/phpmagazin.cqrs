@@ -4,7 +4,7 @@
  *
  * Beispiele für ZF2 & CQRS
  *
- * @package    PizzaRead
+ * @package    PizzaCli
  * @author     Ralf Eggert <r.eggert@travello.de>
  * @link       http://www.ralfeggert.de/
  */
@@ -12,7 +12,7 @@
 /**
  * namespace definition and usage
  */
-namespace PizzaRead\Repository;
+namespace PizzaCli\Repository;
 
 use MongoDB\Collection\CollectionInterface;
 use Zend\ServiceManager\FactoryInterface;
@@ -21,7 +21,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 /**
  * Class PizzaRepositoryFactory
  *
- * @package PizzaRead
+ * @package PizzaCli
  */
 class PizzaRepositoryFactory implements FactoryInterface
 {
@@ -35,11 +35,11 @@ class PizzaRepositoryFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         /** @var $pizzaCollection CollectionInterface */
-        $pizzaCollection = $serviceLocator->get('PizzaRead\Collection\Pizza');
+        $pizzaCollection = $serviceLocator->get('PizzaCli\Collection\Pizza');
 
         /** @var $pizzaCollection CollectionInterface */
         $toppingCollection = $serviceLocator->get(
-            'PizzaRead\Collection\Topping'
+            'PizzaCli\Collection\Topping'
         );
 
         $repository = new PizzaRepository();

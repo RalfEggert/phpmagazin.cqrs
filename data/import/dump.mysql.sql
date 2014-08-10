@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS `pizzas` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 INSERT INTO `pizzas` (`id`, `timestamp`, `title`, `description`, `price`) VALUES
-(1, '2014-08-05 15:46:46', 'Pizza Salami', 'Der Klassiker! Belegt mit leckerer Salami direkt aus Mailand.', 650),
-(2, '2014-08-05 18:38:32', 'Pizza Heftig', 'Für Hungrige! Belegt mit allem, was bei Drei nicht auf den Bäumen ist.', 900),
-(3, '2014-08-05 18:39:03', 'Pizza Vier Jahreszeiten', 'Für jeden was dabei! Belegt mit vier leckeren Belägen.', 800);
+(1, '2014-08-10 13:13:57', 'Pizza Salami', 'Der Klassiker! Belegt mit leckerer Salami direkt aus Mailand.', 650),
+(2, '2014-08-10 13:15:35', 'Pizza Deftig', 'Für Hungrige! Belegt mit allem, was bei Drei nicht auf den Bäumen ist.', 900),
+(3, '2014-08-10 13:16:34', 'Pizza Vier Jahreszeiten', 'Für jeden was dabei! Belegt mit vier leckeren Belägen.', 800);
 
 DROP TABLE IF EXISTS `pizza_toppings`;
 
@@ -54,14 +54,18 @@ CREATE TABLE IF NOT EXISTS `toppings` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 INSERT INTO `toppings` (`id`, `timestamp`, `title`, `price`) VALUES
-(1, '2014-08-05 15:42:44', 'Salami', 100),
-(2, '2014-08-05 15:42:40', 'Käse', 100),
-(3, '2014-08-05 15:42:37', 'Schinken', 150),
-(4, '2014-08-05 15:42:33', 'Zwiebeln', 50),
-(5, '2014-08-05 15:42:30', 'Oliven', 50),
-(6, '2014-08-05 15:42:27', 'Champignons', 100),
-(7, '2014-08-05 15:42:24', 'Hackfleisch', 200),
-(8, '2014-08-05 15:42:20', 'Mais', 50),
-(9, '2014-08-05 15:42:17', 'Tomatenpampe', 50);
+(1, '2014-08-10 13:11:10', 'Salami', 100),
+(2, '2014-08-10 13:11:28', 'Käse', 100),
+(3, '2014-08-10 13:11:36', 'Schinken', 150),
+(4, '2014-08-10 13:11:48', 'Zwiebeln', 50),
+(5, '2014-08-10 13:11:53', 'Oliven', 50),
+(6, '2014-08-10 13:12:07', 'Champignons', 100),
+(7, '2014-08-10 13:12:15', 'Hackfleisch', 200),
+(8, '2014-08-10 13:12:24', 'Mais', 50),
+(9, '2014-08-10 13:12:33', 'Tomatenpampe', 50);
+
+ALTER TABLE `pizza_toppings`
+  ADD CONSTRAINT `pizza_toppings_ibfk_1` FOREIGN KEY (`pizza`) REFERENCES `pizzas` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `pizza_toppings_ibfk_2` FOREIGN KEY (`topping`) REFERENCES `toppings` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 SET FOREIGN_KEY_CHECKS=1;

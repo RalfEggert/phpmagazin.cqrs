@@ -14,6 +14,7 @@ return array(
         'Application',
         'PizzaRead',
         'PizzaChange',
+        'PizzaCli',
         'CQRS',
         'MongoDB',
         'ZendDeveloperTools'
