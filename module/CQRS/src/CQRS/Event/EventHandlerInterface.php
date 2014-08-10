@@ -14,13 +14,11 @@
  */
 namespace CQRS\Event;
 
-use Zend\EventManager\EventManager;
-
 /**
  * Class EventHandler
  *
  * @package CQRS
  */
-class EventHandler extends EventManager implements EventHandlerInterface
+interface EventHandlerInterface
 {
 }
