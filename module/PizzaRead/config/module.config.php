@@ -56,6 +56,7 @@ return array(
             'PizzaRead\Collection\Pizza'   => 'PizzaRead\Collection\PizzaCollectionFactory',
             'PizzaRead\Collection\Topping' => 'PizzaRead\Collection\ToppingCollectionFactory',
             'PizzaRead\Repository\Pizza'   => 'PizzaRead\Repository\PizzaRepositoryFactory',
+            'PizzaRead\Repository\Topping' => 'PizzaRead\Repository\ToppingRepositoryFactory',
         ),
     ),
 );

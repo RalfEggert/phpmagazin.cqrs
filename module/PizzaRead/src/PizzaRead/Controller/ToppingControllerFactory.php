@@ -38,11 +38,11 @@ class ToppingControllerFactory implements FactoryInterface
     {
         $serviceLocator = $controllerManager->getServiceLocator();
 
-        /** @var $pizzaRepository PizzaRepositoryInterface */
-        $pizzaRepository = $serviceLocator->get('PizzaRead\Repository\Pizza');
+        /** @var $toppingRepository ToppingRepositoryInterface */
+        $toppingRepository = $serviceLocator->get('PizzaRead\Repository\Topping');
 
         $controller = new ToppingController();
-        $controller->setPizzaRepository($pizzaRepository);
+        $controller->setToppingRepository($toppingRepository);
 
         return $controller;
     }

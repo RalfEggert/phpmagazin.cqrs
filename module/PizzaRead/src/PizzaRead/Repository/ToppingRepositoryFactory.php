@@ -19,11 +19,11 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Class PizzaRepositoryFactory
+ * Class ToppingRepositoryFactory
  *
  * @package PizzaRead
  */
-class PizzaRepositoryFactory implements FactoryInterface
+class ToppingRepositoryFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -34,16 +34,12 @@ class PizzaRepositoryFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var $pizzaCollection CollectionInterface */
-        $pizzaCollection = $serviceLocator->get('PizzaRead\Collection\Pizza');
-
         /** @var $toppingCollection CollectionInterface */
         $toppingCollection = $serviceLocator->get(
             'PizzaRead\Collection\Topping'
         );
 
-        $repository = new PizzaRepository();
-        $repository->setPizzaCollection($pizzaCollection);
+        $repository = new ToppingRepository();
         $repository->setToppingCollection($toppingCollection);
 
         return $repository;

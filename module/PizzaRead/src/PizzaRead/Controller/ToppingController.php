@@ -14,7 +14,7 @@
  */
 namespace PizzaRead\Controller;
 
-use PizzaRead\Repository\PizzaRepositoryInterface;
+use PizzaRead\Repository\ToppingRepositoryInterface;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
@@ -26,25 +26,25 @@ use Zend\View\Model\JsonModel;
 class ToppingController extends AbstractRestfulController
 {
     /**
-     * @var PizzaRepositoryInterface
+     * @var ToppingRepositoryInterface
      */
-    protected $pizzaRepository;
+    protected $toppingRepository;
 
     /**
-     * @param \PizzaRead\Repository\PizzaRepositoryInterface $pizzaRepository
+     * @param ToppingRepositoryInterface $toppingRepository
      */
-    public function setPizzaRepository(
-        PizzaRepositoryInterface $pizzaRepository
+    public function setToppingRepository(
+        ToppingRepositoryInterface $toppingRepository
     ) {
-        $this->pizzaRepository = $pizzaRepository;
+        $this->toppingRepository = $toppingRepository;
     }
 
     /**
-     * @return \PizzaRead\Repository\PizzaRepositoryInterface
+     * @return ToppingRepositoryInterface
      */
-    public function getPizzaRepository()
+    public function getToppingRepository()
     {
-        return $this->pizzaRepository;
+        return $this->toppingRepository;
     }
 
     /**
@@ -56,7 +56,7 @@ class ToppingController extends AbstractRestfulController
     {
         return new JsonModel(
             array(
-                $this->getPizzaRepository()->fetchToppings()
+                $this->getToppingRepository()->fetchToppings()
             )
         );
     }
@@ -72,7 +72,7 @@ class ToppingController extends AbstractRestfulController
     {
         return new JsonModel(
             array(
-                $this->getPizzaRepository()->fetchToppingById((integer)$id)
+                $this->getToppingRepository()->fetchToppingById((integer)$id)
             )
         );
     }
